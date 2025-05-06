@@ -1,5 +1,13 @@
+//uses built in websocket class in the browser to create an instance of websocket object
 const socket=new WebSocket('ws://localhost:3000');
 
+socket.addEventListener('open',()=>{
+    console.log('connected to the server ');
+})
+//or 
+// socket.onopen=()=>{
+//     console.log('connected to the server ');
+// }
 function sendMessage(e){
     e.preventDefault();
     console.log(' i ran')
@@ -18,3 +26,11 @@ socket.addEventListener('message',({data})=>{
     li.textContent=data;
     ul.appendChild(li);
 })
+
+//or 
+// socket.onmessage=({data})=>{
+//     const ul=document.querySelector('ul');
+//     const li=document.createElement('li');
+//     li.textContent=data;
+//     ul.appendChild(li);
+// }
